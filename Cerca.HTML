@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerca Elétrica</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            position: relative;
+        }
+
+        h1 {
+            color: #003366;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #333;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #003366;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #004a8f;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        .result strong {
+            font-size: 1.2em;
+        }
+
+        .item-list {
+            margin-top: 10px;
+        }
+
+        .item {
+            margin-bottom: 10px;
+        }
+
+        .observation {
+            color: #777;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Cerca Elétrica</h1>
+
+        <form id="budget-form" onsubmit="event.preventDefault(); calculateBudget();">
+            <label for="wall-length">Quantos metros de muro?</label>
+            <input type="number" id="wall-length" name="wall-length" min="1" required>
+
+            <label for="post-interval">Distância entre hastes</label>
+            <select id="post-interval" name="post-interval" required>
+                <option value="2">2 metros</option>
+                <option value="3">3 metros</option>
+            </select>
+
+            <label for="wire-choice">Qual fio de aço deseja utilizar?</label>
+            <select id="wire-choice" name="wire-choice" required>
+                <option value="14564">Fio de aço 0,90mm</option>
+                <option value="14686">Fio de aço 0,60mm</option>
+                <option value="14687">Fio de aço 0,45mm</option>
+            </select>
+
+            <label for="haste-type">Tipo de Haste</label>
+            <select id="haste-type" name="haste-type" required>
+                <option value="25124">Power haste 4 isoladores</option>
+                <option value="17895">Power haste 6 isoladores</option>
+                <option value="17913">Haste barra chata 4 isoladores</option>
+                <option value="22454">Haste barra chata 6 isoladores</option>
+                <option value="17890">Haste estrela 4 isoladores</option>
+                <option value="20079">Haste estrela 6 isoladores</option>
+            </select>
+
+            <button type="button" onclick="calculateBudget()">Calcular Orçamento</button>
+        </form>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function calculateBudget() {
+            const wallLength = parseFloat(document.getElementById('wall-length').value);
+            const postInterval = parseFloat(document.getElementById('post-interval').value);
+            const wireChoiceEl = document.getElementById('wire-choice');
+            const wireChoiceText = wireChoiceEl.selectedOptions[0].text;
+            const wireChoiceCode = wireChoiceEl.value;
+            const hasteTypeEl = document.getElementById('haste-type');
+            const hasteTypeText = hasteTypeEl.selectedOptions[0].text;
+
+            const totalPosts = Math.ceil(wallLength / postInterval);
+
+            const items = [
+                { name: 'Barra de aterramento', observation: '20167' },
+                { name: 'Bateria 12V 7A', observation: '24390' },
+                { name: 'Cabo alta isolação 5mm 100 metros', observation: '20710' },
+                { name: 'Mola esticadora', observation: '20668' },
+                { name: 'Placa de aviso perigo', observation: '20166' },
+                { name: 'Sirene', observation: '17814' },
+                { name: 'Base da Power Haste', observation: '19606' },
+                { name: `${hasteTypeText} (${totalPosts} unidades)`, observation: hasteTypeEl.value },
+                { name: `${wireChoiceText}`, observation: wireChoiceCode }
+            ];
+
+            let resultText = `
+                <strong>Itens do orçamento:</strong>
+                <div class="item-list">
+            `;
+
+            items.forEach(item => {
+                resultText += `
+                    <div class="item">
+                        - ${item.name} <span class="observation">(código: ${item.observation})</span>
+                    </div>
+                `;
+            });
+
+            resultText += '</div>';
+
+            document.getElementById('result').innerHTML = resultText;
+        }
+    </script>
+</body>
+
+</html>
