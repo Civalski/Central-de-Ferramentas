@@ -7,7 +7,7 @@
     <title>Motores Deslizantes</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        * {
+     * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -19,11 +19,11 @@
             background-color: #f0f2f5;
             margin: 0;
             padding: 0;
-            display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             flex-direction: column;
+            padding-top: 90px;
         }
 
         .container {
@@ -36,15 +36,17 @@
         }
 
         .deslizante-gif {
-            max-width: 35%;
+            max-width: 48%;
             height: auto;
             margin-bottom: 10px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            align-items: center;
         }
 
         .form-group {
             margin-bottom: 15px;
+            
         }
 
         label {
@@ -64,7 +66,7 @@
 
         button {
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #153c66;
             border: none;
             border-radius: 5px;
             color: white;
@@ -73,7 +75,7 @@
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #061a30;
         }
 
         .resultados {
@@ -119,7 +121,26 @@
         .footer-content {
             color: white
         }
+        .header {
+            width: 100%;
+            height: 70px;
+            padding: 20px 0; 
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: rgb(39, 39, 39); 
+        }
+        .header img {
+            max-width: 120px;
+            height: fixed;
+        }
     </style>
+        <div class="header">
+            <img src="https://bucket.route66.com.br/header_route66.png" alt="Distribuidora Route 66">
+        </div>
 </head>
 
 <body>
@@ -142,7 +163,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="aberturasHora">Aberturas por Hora:</label>
+            <label for="aberturasHora">Ciclos por Hora:</label>
             <select id="aberturasHora">
                 <option value="indiferente">Indiferente</option>
                 <option value="15">15 ciclos por hora</option>
@@ -158,7 +179,7 @@
             <select id="tempoAbertura">
                 <option value="indiferente">Indiferente</option>
                 <option value="7">Até 7 segundos (Rápido)</option>
-                <option value="8">Acima de 8 segundos (Normal)</option>
+                <option value="8">+ 8 segundos (Normal)</option>
             </select>
         </div>
         <div class="form-group">
@@ -195,8 +216,8 @@
                 { codigo: "20544", nome: "RUN 1200 Industrial I-HSC 127/220V - 1200KG - 3/4 HP - 5 Segundos", pesoMax: 1200, hp: "3/4 HP", tempoAbertura: 5, aberturasHora: 100, voltagem: "127/220", imagem: "https://cdn.route66.com.br/fotos/produtos/20544/250/20544A.webp" },
                 { codigo: "26064", nome: "LIGHT 600 I-HS SPT4K 220V - 600KG - 1/2 HP - 4 Segundos", pesoMax: 600, hp: "1/2 HP", tempoAbertura: 4, aberturasHora: 80, voltagem: "220", imagem: "https://cdn.route66.com.br/fotos/produtos/26064/250/26064A.webp" },
                 { codigo: "26065", nome: "LIGHT 800 I-HS SPT4K 220V - 800KG - 1/2 HP - 4 Segundos", pesoMax: 800, hp: "1/2 HP", tempoAbertura: 4, aberturasHora: 100, voltagem: "220", imagem: "https://cdn.route66.com.br/fotos/produtos/26065/250/26065A.webp" },
-                { codigo: "19517", nome: "MAX POWER Industrial - 2000KG - 1 HP - 26 Segundos", pesoMax: 2000, hp: "1 HP", tempoAbertura: 26, aberturasHora: 120, voltagem: "220/380", imagem: "https://cdn.route66.com.br/fotos/produtos/18110/250/18110A.webp" },
-                { codigo: "18110", nome: "MAX Industrial 220/380 - 1800KG - 1 HP - 12 Segundos", pesoMax: 1800, hp: "3/4 HP", tempoAbertura: 12, aberturasHora: 120, voltagem: "220", imagem: "https://cdn.route66.com.br/fotos/produtos/18110/250/18110A.webp" },
+                { codigo: "19517", nome: "MAX POWER Industrial 220/380 - 2000KG - 1 HP - 26 Segundos", pesoMax: 2000, hp: "1 HP", tempoAbertura: 26, aberturasHora: 120, voltagem: "220/380", imagem: "https://cdn.route66.com.br/fotos/produtos/18110/250/18110A.webp" },
+                { codigo: "18110", nome: "MAX Industrial 220V - 1800KG - 1 HP - 12 Segundos", pesoMax: 1800, hp: "3/4 HP", tempoAbertura: 12, aberturasHora: 120, voltagem: "220", imagem: "https://cdn.route66.com.br/fotos/produtos/18110/250/18110A.webp" },
             ];
 
             function calcularMotorIdeal() {
@@ -242,14 +263,11 @@
         </script>
         <footer class="footer">
             <div class="footer-content">
-                <p>-</p>
                 <nav class="footer-nav">
-                    <a
-                        href="https://route66.com.br/departamento/4-automatizador-de-portao/315-motores?subcategorias=1486&marcas=NICE">Catálogo
-                        Route 66</a>
-                    <a href="https://nice.com.br/automatizadores/portoes-deslizantes/">Catálogo Nice</a>
-                    <a href="https://wa.me/551937546662">Dúvidas e Sugestões</a>
-                    <a href="Motores v2.0.html">Realizar nova consulta</a>
+                    <a href="https://route66.com.br/departamento/4-automatizador-de-portao/315-motores?subcategorias=1486&marcas=NICE" target="_blank">Catálogo Route 66</a>
+                    <a href="https://nice.com.br/automatizadores/portoes-deslizantes/" target="_blank">Catálogo Nice</a>
+               <!-- <a href="https://wa.me/551937546662" target="_blank">Dúvidas e Sugestões</a> -->
+                    <a href="Motores v2.0.html" >Realizar nova consulta</a>
                 </nav>
             </div>
         </footer>

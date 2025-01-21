@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motores Basculantes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         * {
             margin: 0;
@@ -18,11 +19,11 @@
             background-color: #f0f2f5;
             margin: 0;
             padding: 0;
-            display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             flex-direction: column;
+            padding-top: 90px;
         }
 
         .container {
@@ -40,6 +41,7 @@
             margin-bottom: 10px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            align-items: center;
         }
 
         .form-group {
@@ -63,7 +65,7 @@
 
         button {
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #153c66;
             border: none;
             border-radius: 5px;
             color: white;
@@ -72,7 +74,7 @@
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #061a30;
         }
 
         .resultados {
@@ -116,9 +118,34 @@
         }
 
         .footer-content {
-            color: white
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+            padding-top: 45px;
         }
+        .header {
+            width: 100%;
+            height: 70px;
+            padding: 20px 0; 
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: rgb(39, 39, 39);
+            
+        }
+        .header img {
+            max-width: 120px;
+            height: fixed;
+        }
+        
     </style>
+            <div class="header">
+                <img src="https://bucket.route66.com.br/header_route66.png" alt="Distribuidora Route 66">
+            </div>
 </head>
 
 <body>
@@ -145,7 +172,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="aberturasHora">Aberturas por Hora:</label>
+            <label for="aberturasHora">Ciclos por Hora:</label>
             <select id="aberturasHora">
                 <option value="indiferente">Indiferente</option>
                 <option value="20">20 ciclos por hora</option>
@@ -395,14 +422,11 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <p>-</p>
             <nav class="footer-nav">
-                <a
-                    href="https://route66.com.br/departamento/4-automatizador-de-portao/315-motores?subcategorias=1485&marcas=NICE">Catálogo
-                    Route 66</a>
-                <a href="https://nice.com.br/automatizadores/portoes-basculantes/">Catálogo Nice</a>
-                <a href="https://wa.me/551937546662">Dúvidas e Sugestões</a>
-                <a href="Motores v2.0.html">Realizar nova consulta</a>
+                <a href="https://route66.com.br/departamento/4-automatizador-de-portao/315-motores?subcategorias=1485&marcas=NICE" target="_blank">Catálogo Route 66</a>
+                <a href="https://nice.com.br/automatizadores/portoes-basculantes/" target="_blank">Catálogo Nice</a>
+           <!-- <a href="https://wa.me/551937546662" target="_blank">Dúvidas e Sugestões</a> -->
+                <a href="motores v2.0.html">Realizar nova consulta</a>
             </nav>
         </div>
     </footer>
